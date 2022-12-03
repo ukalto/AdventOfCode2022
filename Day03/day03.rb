@@ -19,10 +19,10 @@ input.each{ |line|
 p letter_sum_1
 
 letter_sum_2 = 0
-for i in (0...input.length/3)
+input.each_slice(3){ |f,s,t|
     contain = ""
-    input[i*3].split("").each{ |letter|
-        if input[(i*3)+1].include?(letter) and input[(i*3)+2].include?(letter)
+    f.split("").each{ |letter|
+        if s.include?(letter) and t.include?(letter)
             if not contain.include?(letter)
                 if letter.match /[[:upper:]]/
                     letter_sum_2 += letter.ord - 38
@@ -33,5 +33,5 @@ for i in (0...input.length/3)
             end   
         end
     }
-end
+}
 p letter_sum_2
